@@ -6,5 +6,10 @@
 
 
 ## パスワードハッシュ解析
-・DB等から取得したパスワードハッシュを復元することで、パスワードを使いまわしている場合に別システムに侵入できる
-・johnでパスワード解析できる
+DB等から取得したパスワードハッシュを復元することで、パスワードを使いまわしている場合に別システムに侵入できる
+johnでパスワード解析できる
+```
+john --wordlist=/usr/share/wordlists/rockyou.txt hash.txt 
+```
+Kali Linuxであれば/user/share/wordlistsにrockyouの圧縮されたファイルがある。
+

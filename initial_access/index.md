@@ -21,10 +21,14 @@ Tabの補完や矢印キーの使用、エラー出力等の閲覧などのた�
 ```
 python3 -c 'import pty; pty.spawn("bash")'
 ```
-* Reverse Shellで上記を実行し、Ctrl + Zでバックグラウンドにする
-* stty raw -echo; fgで再度Reverse Shellに入る
+Reverse Shellで上記を実行し、Ctrl + Zでバックグラウンドにする
+```
+stty raw -echo; fg
+```
+で再度Reverse Shellに入る
 
 
 ### 文字制限Bypass
 * 入力値に空白を使用できない場合、$IFS$9で代用できる
+
 https://www.ctfnote.com/web/os-command-injection/whitespace-bypass
