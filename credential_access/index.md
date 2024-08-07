@@ -27,3 +27,10 @@ responderを起動した後、攻撃対象のWebアプリケーション等に�
 例：PHPでinclude(//<受けのIPアドレス>/somefile)を実行されるようCodeInjectionを行うなど
 ```
 取得できたハッシュをjohnなどで解析する
+
+## 匿名ユーザでのアクセス
+### FTP
+匿名ユーザ「anonymous」、パスワード空欄でログインできる場合がある
+```
+ftp anonymous@10.111.111.111
+```

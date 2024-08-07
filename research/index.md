@@ -61,7 +61,7 @@ https://github.com/OJ/gobuster
 
 Kali Linuxであれば/usr/share/wordlistsにワードリストあり
 
-### DNSモード
+### DNS
 ```
 gobuster dns -d example.com -w /usr/share/wordlists/amass/subdomains-top1mil-5000.txt
 ```
@@ -72,8 +72,18 @@ gobuster dns -d example.com -w /usr/share/wordlists/amass/subdomains-top1mil-500
 ```
 gobuster dir -u https://example.com/ -c 'session=123456' -w /usr/share/wordlists/dirbuster/directory-list-2.3-small.txt -s 500 -x php
 ```
+WEBサイトに存在するパスを見つけることができる。
 * -uでURL指定
 * -cでcookie値指定
 * -wでワードリスト指定
 * -sでPositive Status Code指定（-bでNegative Status Code指定できる）
 * -xで拡張子指定できる
+
+### Vhost
+```
+gobuster vhost -u http://example.com -w /usr/share/wordlists/amass/subdomains-top1mil-5000.txt --append-domain
+```
+* -uでURL指定
+* -cでcookie値指定
+* -wでワードリスト指定
+* --append-domain ワードリストの単語をサブドメインとして追加する形で探索する。指定しない場合はFQDNをワードリストの単語として指定する必要がある。
