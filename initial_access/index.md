@@ -1,9 +1,6 @@
 # 初回アクセス
 
-## Code Injection
-Webサービスが使用可能であり、脆弱性が存在する場合は活用できる
-
-### 疎通確認
+## 疎通確認
 HTBのVPNにつないでいればLAN内で完結する
 
 #### ping
@@ -15,11 +12,10 @@ HTBのVPNにつないでいればLAN内で完結する
 * XSS等で攻撃対象でスクリプトを動かし```http://<ip>/```へアクセスさせてリクエストが届くか確認する
 
 
-### Reverse Shell
-* nc -lvnp <ポート番号> で受ける
-* 以下サイトでReverse Shellを貼るコマンドを生成できる
-https://www.revshells.com/
-* 生成したコマンドを攻撃対象に挿入する
+## Reverse Shell
+侵害したシステムから攻撃者に対し接続を行うシェルを用いた通信方法
+* nc -lvnp <ポート番号> でリッスンする
+* [Reverse Shell](reverse_shell/)記載のような手法で侵入後のシステムからシェルを渡す
 
 ### Interactive shell
 Tabの補完や矢印キーの使用、エラー出力等の閲覧などのためにInteractive Shellを確立する
@@ -32,9 +28,4 @@ stty raw -echo; fg
 ```
 で再度Reverse Shellに入る
 
-
-### 文字制限Bypass
-* 入力値に空白を使用できない場合、$IFS$9で代用できる
-
-https://www.ctfnote.com/web/os-command-injection/whitespace-bypass
 
