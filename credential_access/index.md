@@ -28,13 +28,14 @@ responderを起動した後、攻撃対象のWebアプリケーション等に�
 ```
 取得できたハッシュをjohnなどで解析する
 
-## 匿名ユーザでのアクセス
-### FTP
-匿名ユーザ「anonymous」、パスワード空欄でログインできる場合がある
-```
-ftp anonymous@10.111.111.111
-```
-
 ## デフォルトパスワードの使用
 サービスごとのデフォルトパスワードでログインできないか試行する。
+
 https://cirt.net/passwords
+
+## Powershellの履歴取得
+以下の場所からPowerShellのコマンド実行履歴を取得できる
+
+```
+type C:\Users\<ユーザ>\AppData\Roaming\Microsoft\Windows\PowerShell\PSReadline\ConsoleHost_history.txt 
+```
