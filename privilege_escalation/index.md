@@ -20,6 +20,23 @@ User josh may run the following commands on localhost:
 
 https://gtfobins.github.io/
 
+## SUID(Set User ID)
+Linuxの特殊なパーミッション属性の一つ。誰がそのファイルを実行しても、セットされたユーザで実行されるという状態。SUIDでrootユーザを指定してある場合、そのファイルから権限昇格できる可能性がある。
+
+以下のコマンドでSUIDビットが設定されているすべてのファイルを見つけることができる。
+```
+$find / -user root -perm -4000 -exec ls -ldb {} \;
+```
+
+また、ls -laで特定のファイルのパーミッションを確認し、「s」があるときはSUIDが設定されている。
+```
+$ ls -l /usr/bin/passwd
+-rwsr-xr-x 1 root root 118168 Jul  7 22:30 /usr/bin/passwd  
+```
+
+参考：https://tryhackme.com/r/resources/blog/linux-privilege-escalation-suid
+
+
 ## Impacket
 [Impacket](https://github.com/fortra/impacket)はネットワークプロトコルを操作するためのPythonクラスのコレクションと説明されているものの、Windowsシステムへの侵入やデータ送出に役立つツールが多く含まれている
 
