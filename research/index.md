@@ -72,6 +72,22 @@ smbclient -N -L <ip>
 ftp anonymous@<ip>
 ```
 
+### zipファイルのパスワード解析
+zipファイルのパスワードが不明な場合はJohn The Ripperを使用することでパスワードを解析することができる
+
+https://www.kali.org/tools/john/
+
+zipjohnコマンドでzipファイルからハッシュ値を生成する
+```
+$ zip2john example.zip > hash.txt
+```
+
+johnコマンドで解析を行う
+```
+$ john --wordlist=/usr/share/wordlists/rockyou.txt hash.txt
+```
+
+
 ## ブルートフォース（Gobuster）
 DNS（subdomain）やパスなどのファジングが可能
 https://github.com/OJ/gobuster

@@ -4,11 +4,16 @@
 HTBのVPNにつないでいればLAN内で完結する
 
 #### ping
-* ```tcpdump -i <ネットワークデバイス名> icmpでping```を受ける
+* ```tcpdump -i <ネットワークデバイス名> icmpでping```で受ける
 * コマンドインジェクション等で```;ping -c 3 <受けのIPアドレス>; ```等を挿入してpingが届くか確認する
 
+#### ldap
+* ```tcpdump port ldap -i <ネットワークデバイス名> -X -s 1024```で受ける
+* -Xでパケットの内容を16進数とASCIIで表示する
+* -sでキャプチャのバッファサイズを指定する
+
 #### http
-* ```python3 -m http.server -m 80```でhttp通信を受けられる
+* ```python3 -m http.server 80```でhttp通信を受けられる
 * XSS等で攻撃対象でスクリプトを動かし```http://<ip>/```へアクセスさせてリクエストが届くか確認する
 
 
