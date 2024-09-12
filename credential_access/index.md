@@ -7,11 +7,23 @@
 
 ## パスワードハッシュ解析
 DB等から取得したパスワードハッシュを復元することで、パスワードを使いまわしている場合に別システムに侵入できる
+
+Hash Identinierでハッシュ値の形式を特定できる
+
+```
+hash-identifier
+```
+
 johnでパスワード解析できる
 ```
-john --wordlist=/usr/share/wordlists/rockyou.txt hash.txt 
+john --format=raw-sha512 --wordlist=/usr/share/wordlists/rockyou.txt hash.txt 
 ```
 Kali Linuxであれば/user/share/wordlistsにrockyouの圧縮されたファイルがある。
+formatで指定できる形式は以下を参照
+https://pentestmonkey.net/cheat-sheet/john-the-ripper-hash-formats
+
+パスワード解析にはWebから使用できるCrackStationも便利
+https://crackstation.net/
 
 ## NTLMハッシュの取得
 

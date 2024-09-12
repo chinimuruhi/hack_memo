@@ -6,5 +6,6 @@
 * [資格情報アクセス](credential_access/)
 * [発見](discovery/)
 * [横展開](lateral_movement/)
+* [流出](exfiltration/)
 * [その他](other/)
 * [参考資料](reference/)
