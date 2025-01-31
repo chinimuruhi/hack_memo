@@ -63,8 +63,6 @@ https://kb.offsec.nl/tools/framework/pypykatz/
 ```
 $ pypykatz registry --sam sam system
 ```
-# 参考文献
-https://kb.offsec.nl
 
 ## デフォルトパスワードの使用
 サービスごとのデフォルトパスワードでログインできないか試行する。
