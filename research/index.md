@@ -120,3 +120,47 @@ gobuster vhost -u http://example.com -w /usr/share/wordlists/amass/subdomains-to
 * -cでcookie値指定
 * -wでワードリスト指定
 * --append-domain ワードリストの単語をサブドメインとして追加する形で探索する。指定しない場合はFQDNをワードリストの単語として指定する必要がある。
+
+## SNMP（Simple Network Management Protocol）
+UDPの161ポートが空いている場合、snmp-checkコマンドでSNMPデバイスの一覧を表示できる
+```
+$ snmp-check
+```
+DNSが存在する場合、Digコマンドで情報を取得できる
+dig 
+@dnsserver
+のIP 対象ホスト名 ANY +tcp
+* ANY: Aレコード以外も取得する
+* +tcp: DNSがTCPの場合は記載する
+
+## netexec
+NetExecは、大規模ネットワークのセキュリティ評価を自動化するのに役立つネットワークのツール
+https://netexec.wiki
+
+### SMBの例
+#### ランダムなユーザー名とパスワードでターゲットがゲスト ログオンを受け入れるかどうかを確認
+```
+nxc smb IPアドレス -u guest -p '' 
+```
+#### ゲストユーザでアクセス可能な共有フォルダを探索
+```
+nxc smb IPアドレス -u guest -p '' --shares
+```
+#### ユーザ名の一覧を取得
+```
+nxc smb IPアドレス -u guest -p '' --users 
+```
+#### RIDの一覧を取得
+```
+nxc smb IPアドレス -u guest -p '' --rid-brute
+```
+SidTypeUserのラベルがついたエントリが操作可能
+#### パスワードスプレー
+```
+nxc smb IPアドレス -u ユーザ名一覧ファイルのパス -p 'パスワード' --continue-on-success 
+```
+### ldapの例
+#### 特定のユーザ名及びパスワードで使用可能か確認
+```
+nxc ldap IPアドレス -u 'ユーザ名' -p 'パスワード'
+```

