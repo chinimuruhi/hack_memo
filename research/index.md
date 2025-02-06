@@ -112,11 +112,16 @@ johnコマンドで解析を行う
 $ john --wordlist=/usr/share/wordlists/rockyou.txt hash.txt
 ```
 
+### gitの解析
+.gitのファイルにアクセスできる場合は、Gitのログ等から重要情報を取得できる可能性がある。
+GitHackを使用することで.gitからソースコードを再構築できる
+https://github.com/lijiejie/GitHack
+```
+python GitHack.py -u "http://example.com/.git/"
+```
 
-## ブルートフォース（Gobuster）
-DNS（subdomain）やパスなどのファジングが可能
-https://github.com/OJ/gobuster
 
+## ブルートフォース
 Kali Linuxであれば/usr/share/wordlistsにワードリストあり
 
 ### DNS
@@ -136,6 +141,11 @@ WEBサイトに存在するパスを見つけることができる。
 * -wでワードリスト指定
 * -sでPositive Status Code指定（-bでNegative Status Code指定できる）
 * -xで拡張子指定できる
+
+dirsearchを試すのも良いかも
+```
+dirsearch -u example.com -i 200
+```
 
 ### Vhost
 ```

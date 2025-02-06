@@ -17,6 +17,12 @@ mget *
 ```
 ※カレントディレクトリにアクセス権限がないとファイル取得でエラーになるので注意
 
+## SSH
+SSH接続ができず、「debug1: expecting SSH2_MSG_KEX_DH_GEX_REPLY」で止まっている時は以下のコマンドを実行すると良い
+```
+sudo ifconfig ネットワークインターフェース名 mtu 1200
+```
+
 ## LDAPの使用方法
 データの取得
 ```
@@ -24,3 +30,9 @@ ldapsearch -H ldap://ホスト名 -D "認証に使用するユーザ名" -w "認
 ```
 LDAP の一部の実装では、user@company.com のような標準形式でバインド・ユーザー名を受け入れますが、他の LDAP 実装ではユーザーの識別名 (DN) が必要になる場合があります。
 DN フォーマットの例: uid=username,c=us,ou=subdomain,dc=company,dc=com
+
+## curl
+curlでディレクトリトラバーサル攻撃を行う場合、--path-as-isオプションが必要。（curl側でのパスの正規化を防ぐため）
+```
+curl --path-as-is http//example.com/../../../etc/hosts
+```
