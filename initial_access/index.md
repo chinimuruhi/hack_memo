@@ -34,3 +34,5 @@ stty raw -echo; fg
 で再度Reverse Shellに入る
 
 
+## Webの脆弱性活用
+[Webの脆弱性活用](web_vulnerability/)を参照

@@ -25,7 +25,7 @@ Linuxの特殊なパーミッション属性の一つ。誰がそのファイル
 
 以下のコマンドでSUIDビットが設定されているすべてのファイルを見つけることができる。
 ```
-$find / -user root -perm -4000 -exec ls -ldb {} \;
+$find / -perm /4000 2>/dev/null
 ```
 
 また、ls -laで特定のファイルのパーミッションを確認し、「s」があるときはSUIDが設定されている。
@@ -35,6 +35,12 @@ $ ls -l /usr/bin/passwd
 ```
 
 参考：https://tryhackme.com/r/resources/blog/linux-privilege-escalation-suid
+
+## capabilityの調査
+以下のコマンドでcapabilityを確認することができる。
+```
+getcap -r / 2>/dev/null
+```
 
 ### strace
 straceコマンドは、トレース対象のプログラムが発行するシステムコールと受信したシグナルを出力するコマンド。SUIDビットが設定されている実行ファイルについて調査すると良い
